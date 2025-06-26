@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  openwebui:
+    image: ghcr.io/jolow99/openwebui:latest
+    container_name: open-webui  # Makes management easier
+    restart: unless-stopped     # Auto-restart if container fails
+    ports:
+      - "3000:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    # environment:  # Optional - Docker auto-generates secret key
+      # - 'WEBUI_SECRET_KEY=your-secret-key-here'  # Only needed for multi-node setups
+
+volumes:
+  open-webui:
